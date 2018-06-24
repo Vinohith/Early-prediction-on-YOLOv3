@@ -141,8 +141,8 @@ class YOLO:
         
         for i in range(0,3):
             masks = [[6, 7, 8], [3, 4, 5], [0, 1, 2]]
-            masks = masks[0:i+1]
-            threshold = 0.7
+            masks = masks[i]
+        
         
             boxes, classes, scores = [], [], []
 
@@ -184,8 +184,9 @@ class YOLO:
             
             scores = np.array(scores)
             if scores.all() > 0.9:
-                print('Prediction and detection happened at {}'.format(detection_layers[i]))
                 print(scores)
+                print('Prediction and detection happened at {}'.format(detection_layers[i]))
+                
                 break
             else:
                 continue
