@@ -140,7 +140,7 @@ class YOLO:
                    [59, 119], [116, 90], [156, 198], [373, 326]]
         #detection_layers = [82, 64, 106]
         
-        
+        '''
         masks = [[0,1,2]]
         boxes, classes, scores = [], [], []
         
@@ -230,7 +230,7 @@ class YOLO:
         
         '''
         for i in range(0,3):
-            masks = [[6, 7, 8], [3, 4, 5], [0, 1, 2]]
+            masks = [[0, 1, 2], [3,4,5], [6,7,8]]
             masks = masks[:i+1]
             print(masks)
         
@@ -281,7 +281,7 @@ class YOLO:
                 break
             else:
                 continue
-        '''
+        
         #print(scores)
         #print('Prediction and detection happened at {}'.format(detection_layers[i]))   
         return boxes, classes, scores
