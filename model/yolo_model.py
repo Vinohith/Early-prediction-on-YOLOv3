@@ -141,7 +141,7 @@ class YOLO:
         #detection_layers = [82, 64, 106]
         
         
-        masks = [[6,7,8]]
+        masks = [[3,4,5]]
         boxes, classes, scores = [], [], []
         
         for out, mask in zip(outs, masks):
@@ -179,7 +179,7 @@ class YOLO:
         boxes = np.concatenate(nboxes)
         classes = np.concatenate(nclasses)
         scores = np.concatenate(nscores)
-        
+        print(scores)
         
         '''
         for i in range(0,3):
