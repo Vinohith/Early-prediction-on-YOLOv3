@@ -184,10 +184,12 @@ class YOLO:
             
             scores = np.array(scores)
             if scores.all() > 0.9:
+                #print(scores)
                 break
             elif i == 2:
                 break
-                
+        
+        print(scores)
         print('Prediction and detection happened at {}'.format(detection_layers[i]))   
         return boxes, classes, scores
 
