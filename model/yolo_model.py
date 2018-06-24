@@ -231,7 +231,7 @@ class YOLO:
         '''
         for i in range(2,4):
             masks = [[0, 1, 2], [3,4,5], [6,7,8]]
-            masks = masks[:i]
+            masks = masks[:i+1]
             print(masks)
         
         
