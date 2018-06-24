@@ -184,13 +184,14 @@ class YOLO:
             
             scores = np.array(scores)
             if scores.all() > 0.9:
-                #print(scores)
+                print('Prediction and detection happened at {}'.format(detection_layers[i]))
+                print(scores)
                 break
-            elif i == 2:
-                break
+            else:
+                continue
         
-        print(scores)
-        print('Prediction and detection happened at {}'.format(detection_layers[i]))   
+        #print(scores)
+        #print('Prediction and detection happened at {}'.format(detection_layers[i]))   
         return boxes, classes, scores
 
     def predict(self, image, shape):
