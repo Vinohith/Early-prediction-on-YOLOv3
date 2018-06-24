@@ -276,7 +276,7 @@ class YOLO:
             scores = np.array(scores)
             if scores.all() > 0.9:
                 #print(scores)
-                print('Prediction and detection happened at {}'.format(detection_layers[i]))
+                print('Prediction and detection happened at {}'.format(detection_layers[i-2]))
                 
                 break
             else:
