@@ -141,7 +141,7 @@ class YOLO:
         #detection_layers = [82, 64, 106]
         
         
-        masks = [6,7,8]
+        masks = [[6,7,8]]
         boxes, classes, scores = [], [], []
         
         for out, mask in zip(outs, masks):
