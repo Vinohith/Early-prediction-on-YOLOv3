@@ -177,7 +177,7 @@ class YOLO:
         classes = np.concatenate(nclasses)
         scores = np.concatenate(nscores)
 
-        return boxes, classes, scores
+    return boxes, classes, scores
 '''
     def _yolo_out(self, outs, shape):
         """Process output of yolo base net.
