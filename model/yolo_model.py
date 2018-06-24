@@ -141,27 +141,27 @@ class YOLO:
         boxes, classes, scores = [], [], []
 
         for out, mask in zip(outs, masks):
-			if [6,7,8] in mask:
-				print ('Early exit at 82nd layer')
-				b, c, s = self._process_feats(out, anchors, mask)
-				b, c, s = self._filter_boxes(b, c, s)
-				boxes.append(b)
-				classes.append(c)
-				scores.append(s)
-			elif ([6,7,8] and [3,4,5]) in mask:
-				print('Early exit at 94th layer')
-				b, c, s = self._process_feats(out, anchors, mask)
-				b, c, s = self._filter_boxes(b, c, s)
-				boxes.append(b)
-				classes.append(c)
-				scores.append(s)
-			else:
-				print('Exit at 106th layer')
-				b, c, s = self._process_feats(out, anchors, mask)
-				b, c, s = self._filter_boxes(b, c, s)
-				boxes.append(b)
-				classes.append(c)
-				scores.append(s)
+		if [6,7,8] in mask:
+			print ('Early exit at 82nd layer')
+			b, c, s = self._process_feats(out, anchors, mask)
+			b, c, s = self._filter_boxes(b, c, s)
+			boxes.append(b)
+			classes.append(c)
+			scores.append(s)
+		elif ([6,7,8] and [3,4,5]) in mask:
+			print('Early exit at 94th layer')
+			b, c, s = self._process_feats(out, anchors, mask)
+			b, c, s = self._filter_boxes(b, c, s)
+			boxes.append(b)
+			classes.append(c)
+			scores.append(s)
+		else:
+			print('Exit at 106th layer')
+			b, c, s = self._process_feats(out, anchors, mask)
+			b, c, s = self._filter_boxes(b, c, s)
+			boxes.append(b)
+			classes.append(c)
+			scores.append(s)
 
         boxes = np.concatenate(boxes)
         classes = np.concatenate(classes)
