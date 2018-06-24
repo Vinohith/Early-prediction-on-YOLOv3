@@ -138,10 +138,10 @@ class YOLO:
         #masks = [[6, 7, 8], [3, 4, 5], [0, 1, 2]]
         anchors = [[10, 13], [16, 30], [33, 23], [30, 61], [62, 45],
                    [59, 119], [116, 90], [156, 198], [373, 326]]
-        detection_layers = [82, 64, 106]
+        detection_layers = [94, 106]
         
         '''
-        masks = [[0,1,2]]
+        masks = [[6,7,8], [3,4,5]]
         boxes, classes, scores = [], [], []
         
         for out, mask in zip(outs, masks):
@@ -229,9 +229,9 @@ class YOLO:
             print(scores)
         
         '''
-        for i in range(0,3):
+        for i in range(2,4):
             masks = [[0, 1, 2], [3,4,5], [6,7,8]]
-            masks = masks[:i+1]
+            masks = masks[:i]
             print(masks)
         
         
