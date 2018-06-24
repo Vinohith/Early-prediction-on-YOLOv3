@@ -140,33 +140,14 @@ class YOLO:
 
         boxes, classes, scores = [], [], []
         
-        mask_count = []
         for out, mask in zip(outs, masks):
-            mask_count.append(mask)
-        
-        if mask_count == [6,7,8]:  
-            print('Early prediction at the 82nd layer')
+            print(outs)
             b, c, s = self._process_feats(out, anchors, mask)
             b, c, s = self._filter_boxes(b, c, s)
             boxes.append(b)
             classes.append(c)
             scores.append(s)
-        elif mask_count == [[6,7,8], [3,4,5]]:
-            print('Early prediction at the 94th layer')
-            b, c, s = self._process_feats(out, anchors, mask)
-            b, c, s = self._filter_boxes(b, c, s)
-            boxes.append(b)
-            classes.append(c)
-            scores.append(s)
-        else :
-            print('Prediction at the final layer (106th layer)')
-            b, c, s = self._process_feats(out, anchors, mask)
-            b, c, s = self._filter_boxes(b, c, s)
-            boxes.append(b)
-            classes.append(c)
-            scores.append(s)
-         
-
+            
         boxes = np.concatenate(boxes)
         classes = np.concatenate(classes)
         scores = np.concatenate(scores)
