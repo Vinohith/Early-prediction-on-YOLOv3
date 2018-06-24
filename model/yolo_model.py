@@ -137,46 +137,58 @@ class YOLO:
         masks = [[6, 7, 8], [3, 4, 5], [0, 1, 2]]
         anchors = [[10, 13], [16, 30], [33, 23], [30, 61], [62, 45],
                    [59, 119], [116, 90], [156, 198], [373, 326]]
-
-        boxes, classes, scores = [], [], []
+        detection_layers = [82, 64, 106]
         
-        for out, mask in zip(outs, masks):
-            print(outs)
-            b, c, s = self._process_feats(out, anchors, mask)
-            b, c, s = self._filter_boxes(b, c, s)
-            boxes.append(b)
-            classes.append(c)
-            scores.append(s)
+        for i in range(0,3):
+            masks = [[6, 7, 8], [3, 4, 5], [0, 1, 2]]
+            masks = masks[0:i+1]
+            threshold = 0.7
+        
+            boxes, classes, scores = [], [], []
+
+            for out, mask in zip(outs, masks):
+                b, c, s = self._process_feats(out, anchors, mask)
+                b, c, s = self._filter_boxes(b, c, s)
+                boxes.append(b)
+                classes.append(c)
+                scores.append(s)
+
+            boxes = np.concatenate(boxes)
+            classes = np.concatenate(classes)
+            scores = np.concatenate(scores)
+
+            # Scale boxes back to original image shape.
+            width, height = shape[1], shape[0]
+            image_dims = [width, height, width, height]
+            boxes = boxes * image_dims
+
+            nboxes, nclasses, nscores = [], [], []
+            for c in set(classes):
+                inds = np.where(classes == c)
+                b = boxes[inds]
+                c = classes[inds]
+                s = scores[inds]
+
+                keep = self._nms_boxes(b, s)
+
+                nboxes.append(b[keep])
+                nclasses.append(c[keep])
+                nscores.append(s[keep])
+
+            if not nclasses and not nscores:
+                return None, None, None
+
+            boxes = np.concatenate(nboxes)
+            classes = np.concatenate(nclasses)
+            scores = np.concatenate(nscores)
             
-        boxes = np.concatenate(boxes)
-        classes = np.concatenate(classes)
-        scores = np.concatenate(scores)
-
-        # Scale boxes back to original image shape.
-        width, height = shape[1], shape[0]
-        image_dims = [width, height, width, height]
-        boxes = boxes * image_dims
-
-        nboxes, nclasses, nscores = [], [], []
-        for c in set(classes):
-            inds = np.where(classes == c)
-            b = boxes[inds]
-            c = classes[inds]
-            s = scores[inds]
-
-            keep = self._nms_boxes(b, s)
-
-            nboxes.append(b[keep])
-            nclasses.append(c[keep])
-            nscores.append(s[keep])
-
-        if not nclasses and not nscores:
-            return None, None, None
-
-        boxes = np.concatenate(nboxes)
-        classes = np.concatenate(nclasses)
-        scores = np.concatenate(nscores)
-
+            scores = np.array(scores)
+            if scores.all() > 0.9:
+                break
+            elif i == 2:
+                break
+                
+        print('Prediction and detection happened at {}'.format(detection_layers[i]))   
         return boxes, classes, scores
 
     def predict(self, image, shape):
