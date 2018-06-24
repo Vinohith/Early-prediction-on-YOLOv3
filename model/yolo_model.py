@@ -141,7 +141,8 @@ class YOLO:
         
         for i in range(0,3):
             masks = [[6, 7, 8], [3, 4, 5], [0, 1, 2]]
-            masks = masks[i]
+            masks = masks[:i+1]
+            print(masks)
         
         
             boxes, classes, scores = [], [], []
