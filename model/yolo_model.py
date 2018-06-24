@@ -33,6 +33,7 @@ class YOLO:
         grid_h, grid_w, num_boxes = map(int, out.shape[1: 4])
 
         anchors = [anchors[i] for i in mask]
+        print(anchors)
         # Reshape to batch, height, width, num_anchors, box_params.
         anchors_tensor = K.reshape(K.variable(anchors),
                                    [1, 1, len(anchors), 2])
