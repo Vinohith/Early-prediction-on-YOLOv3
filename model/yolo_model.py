@@ -151,34 +151,34 @@ class YOLO:
             classes.append(c)
             scores.append(s)
         
-         boxes = np.concatenate(boxes)
-            classes = np.concatenate(classes)
-            scores = np.concatenate(scores)
+        boxes = np.concatenate(boxes)
+        classes = np.concatenate(classes)
+        scores = np.concatenate(scores)
 
             # Scale boxes back to original image shape.
-            width, height = shape[1], shape[0]
-            image_dims = [width, height, width, height]
-            boxes = boxes * image_dims
+        width, height = shape[1], shape[0]
+        image_dims = [width, height, width, height]
+        boxes = boxes * image_dims
 
-            nboxes, nclasses, nscores = [], [], []
-            for c in set(classes):
-                inds = np.where(classes == c)
-                b = boxes[inds]
-                c = classes[inds]
-                s = scores[inds]
+        nboxes, nclasses, nscores = [], [], []
+        for c in set(classes):
+            inds = np.where(classes == c)
+            b = boxes[inds]
+            c = classes[inds]
+            s = scores[inds]
 
-                keep = self._nms_boxes(b, s)
+            keep = self._nms_boxes(b, s)
 
-                nboxes.append(b[keep])
-                nclasses.append(c[keep])
-                nscores.append(s[keep])
+            nboxes.append(b[keep])
+            nclasses.append(c[keep])
+            nscores.append(s[keep])
 
-            if not nclasses and not nscores:
-                return None, None, None
+        if not nclasses and not nscores:
+            return None, None, None
 
-            boxes = np.concatenate(nboxes)
-            classes = np.concatenate(nclasses)
-            scores = np.concatenate(nscores)
+        boxes = np.concatenate(nboxes)
+        classes = np.concatenate(nclasses)
+        scores = np.concatenate(nscores)
         
         
         '''
