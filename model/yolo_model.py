@@ -179,6 +179,8 @@ class YOLO:
         boxes = np.concatenate(nboxes)
         classes = np.concatenate(nclasses)
         scores = np.concatenate(nscores)
+        
+        scores = np.array(scores)
         print(scores)
         
         '''
