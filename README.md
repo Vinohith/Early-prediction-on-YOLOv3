@@ -15,7 +15,7 @@ According to the paper [YOLOv3: An Incremental Improvement](https://pjreddie.com
 
 - Run the follow command to convert darknet weight file to keras h5 file. The `yad2k.py` was modified from [allanzelener/YAD2K](https://github.com/allanzelener/YAD2K).
 ```
-python yad2k.py cfg\yolo.cfg yolov3.weights data\yolo.h5
+python yad2k.py cfg/yolo.cfg yolov3.weights data/yolo.h5
 ```
 
 - run follow command to show the demo. The result can be found in `images\res\` floder.
