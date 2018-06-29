@@ -192,8 +192,11 @@ class YOLO:
         """
 
         outs = self._yolo.predict(image)
-        outs = np.array(outs)
-        print(outs.shape[:-1])
+        np.array(outs)
+        newouts = np.array(outs)
+        print(newouts.shape)
+        print(newouts.dtype)
+        #print(outs.shape[:-1])
         boxes, classes, scores = self._yolo_out(outs, shape)
 
         return boxes, classes, scores
