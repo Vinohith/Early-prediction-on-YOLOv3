@@ -192,6 +192,7 @@ class YOLO:
         """
 
         outs = self._yolo.predict(image)
+        '''
         print(len(outs))
         print(len(outs[0]))
         print(len(outs[0][0]))
@@ -201,6 +202,7 @@ class YOLO:
         print()
         print(len(outs[2]))
         print(len(outs[2][0]))
+        '''
         
         #print(len(outs[0]))
         #print(outs[0][0])
@@ -218,6 +220,7 @@ class YOLO:
         
         for i in range(1, 4):
             out = outs[0:i]
+            print(len(out))
             boxes, classes, scores = self._yolo_out(out, shape)
             acc = np.array(scores)
             if acc.all()>0.9:
