@@ -222,6 +222,7 @@ class YOLO:
             out = [outs[i-1]]
             print(len(out))
             boxes, classes, scores = self._yolo_out(out, shape)
+            type(scores)
             acc = np.array(scores)
             if acc.all()>0.9:
                 print('Early prediction at layer {}'.format(layer[i-1]))
