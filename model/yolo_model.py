@@ -193,6 +193,15 @@ class YOLO:
 
         outs = self._yolo.predict(image)
         print(len(outs))
+        print(len(outs[0]))
+        print(len(outs[0][0]))
+        print('')
+        print(len(outs[1]))
+        print(len(outs[1][0]))
+        print()
+        print(len(outs[2]))
+        print(len(outs[2][0]))
+        
         #print(len(outs[0]))
         #print(outs[0][0])
         #print(outs[0][0][0])
