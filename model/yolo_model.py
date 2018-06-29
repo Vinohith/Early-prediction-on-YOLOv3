@@ -192,12 +192,13 @@ class YOLO:
         """
 
         outs = self._yolo.predict(image)
-        print(len(outs[0]))
-        print(outs[0][0])
-        print(outs[0][0][0])
-        print(len(outs[0][0][0][0]))
-        print(len(outs[0][0][0][0][0]))
-        #print(len(outs[0][0][0][0][0][0]))
+        print(len(outs))
+        #print(len(outs[0]))
+        #print(outs[0][0])
+        #print(outs[0][0][0])
+        #print(len(outs[0][0][0][0]))
+        #print(len(outs[0][0][0][0][0]))
+        
         #np.array(outs)
         #newouts = np.array(outs)
         #print(newouts.shape)
