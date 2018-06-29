@@ -219,7 +219,7 @@ class YOLO:
         layer = [82, 94, 106]
         
         for i in range(1, 4):
-            out = outs[0:i]
+            out = outs[i-1]
             print(len(out))
             boxes, classes, scores = self._yolo_out(out, shape)
             acc = np.array(scores)
