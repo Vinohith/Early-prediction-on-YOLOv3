@@ -196,6 +196,8 @@ class YOLO:
         print(len(outs[0][0]))
         print(len(outs[0][0][0]))
         print(len(outs[0][0][0][0]))
+        print(len(outs[0][0][0][0][0]))
+        print(len(outs[0][0][0][0][0][0]))
         #np.array(outs)
         #newouts = np.array(outs)
         #print(newouts.shape)
