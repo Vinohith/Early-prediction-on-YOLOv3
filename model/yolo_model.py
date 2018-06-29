@@ -213,6 +213,17 @@ class YOLO:
         #print(newouts.shape)
         #print(newouts.dtype)
         #print(outs.shape[:-1])
-        boxes, classes, scores = self._yolo_out(outs, shape)
+        
+        layer = [82, 94, 106]
+        
+        for i in range(1, 4):
+            out = outs[0:i]
+            boxes, classes, scores = self._yolo_out(out, shape)
+            acc = np.array(scores)
+            if acc.all()>0.9:
+                print('Early prediction at layer {}'.format(layer[i-1]))
+                break
+        
+        #boxes, classes, scores = self._yolo_out(outs, shape)
 
         return boxes, classes, scores
