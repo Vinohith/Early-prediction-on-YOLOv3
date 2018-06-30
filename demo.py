@@ -125,7 +125,7 @@ def detect_vedio(video, yolo, all_classes):
 
 
 if __name__ == '__main__':
-    yolo = YOLO(0.8, 0.5)
+    yolo = YOLO(0.6, 0.5)
     file = 'data/coco_classes.txt'
     all_classes = get_classes(file)
 
