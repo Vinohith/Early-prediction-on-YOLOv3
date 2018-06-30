@@ -221,6 +221,7 @@ class YOLO:
         for i in range(1, 4):
             out = outs[:i]
             print(len(out))
+            boxes, classes, scores = [], [], []
             boxes, classes, scores = self._yolo_out(out, shape)
             print(type(scores))
             print(scores)
@@ -229,18 +230,10 @@ class YOLO:
             print(scores.shape)
             acc = np.array(scores)
             print(acc.shape)
-            for j in range(len(scores)):
-                if scores[j] > 0.9:
-                    if j == len(scores):                       
-                        print('Early prediction at layer {}'.format(layer[i-1]))
-                        return boxes, classes, scores
-                else:
-                    break
-                    
-                    
-            
-            #if acc.all()>0.9:
-                #print('Early prediction at layer {}'.format(layer[i-1]))
+                        
+            if scores.all()>0.9:
+                print('Early prediction at layer {}'.format(layer[i-1]))
+                return boxes, classes, scores
                 
         
         #boxes, classes, scores = self._yolo_out(outs, shape)
