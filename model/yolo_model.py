@@ -226,9 +226,9 @@ class YOLO:
             
             for j in range(len(scores)):
                 if scores[j] > 0.85:
-                    #if j == len(scores)-1:
-                    print('Early prediction at the {}th layer !!'.format(layer[i-1]))
-                    return boxes, classes, scores
+                    if j == len(scores)-1:
+                        print('Early prediction at the {}th layer !!'.format(layer[i-1]))
+                        return boxes, classes, scores
                 else:
                     break
                 
