@@ -231,7 +231,7 @@ class YOLO:
             print(acc.shape)
             
             for j in range(len(scores)):
-                if scores[j] > 0.9:
+                if scores[j] > 0.85:
                     if j == len(scores)-1:
                         print('Early prediction at layer {}'.format(layer[i-1]))
                         return boxes, classes, scores
