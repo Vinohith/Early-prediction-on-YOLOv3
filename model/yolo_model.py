@@ -227,7 +227,7 @@ class YOLO:
             print(scores.shape)
             acc = np.array(scores)
             print(acc.shape)
-            if acc.all()>1:
+            if acc.all()>0.9:
                 print('Early prediction at layer {}'.format(layer[i-1]))
                 
         
