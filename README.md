@@ -25,7 +25,7 @@ python demo.py
 
 ## Demo result
 
-It can be seen that yolo v3 has a better classification ability than yolo v2.
+The first image is the early prediction at the 82nd layer, while the second image is the prediction at the 106th layer (final layer).
 
 <img width="400" height="350" src="/images/res/zebra.jpeg"/><img width="400" height="350" src="/images/res/traffic.jpg"/>
 
