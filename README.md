@@ -27,11 +27,8 @@ python demo.py
 
 It can be seen that yolo v3 has a better classification ability than yolo v2.
 
-<img width="400" height="350" src="/images/res/dog.jpg"/><img width="400" height="350" src="/images/res/person.jpg"/>
+<img width="400" height="350" src="/images/res/zebra.jpeg"/><img width="400" height="350" src="/images/res/traffic.jpg"/>
 
-## TODO
-
-- Train the model.
 
 ## Reference
 
@@ -39,6 +36,8 @@ It can be seen that yolo v3 has a better classification ability than yolo v2.
 	  title={YOLOv3: An Incremental Improvement},  
 	  author={J Redmon, A Farhadi },
 	  year={2018}
+	  
+	  This code is a wrapper over YOLOv3(https://github.com/xiaochus/YOLOv3)
 
 
 
