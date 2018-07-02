@@ -37,7 +37,7 @@ It can be seen that yolo v3 has a better classification ability than yolo v2.
 	  author={J Redmon, A Farhadi },
 	  year={2018}
 	  
-This code is a wrapper over YOLOv3(https://github.com/xiaochus/YOLOv3)
+This code is a wrapper over [YOLOv3](https://github.com/xiaochus/YOLOv3)
 
 
 
